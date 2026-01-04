@@ -11,11 +11,94 @@
 </head>
 <body>
 
+    <div class="instructions-container">
+        <p class="instructions">
+            Welcome to a typing test. This test measures your typing speed. 
+            The rules are simple, start typing what's inside the text container until time's up! For each character you type, it highlights in green (means you've typed it correctly) or in red (means you've made a mistake), then at the end, you'll get a score refering to your typing speed. Once you begin typing, the countdown will start!
+        </p>
+    </div>
+
     <h1>Typing Test</h1>
+    
+    <div class="selection-container">
+        <form id="form">
+            <div class="topics">
+                <label for="topics">Choose a topic:</label><br>
+                <select name="topics" id="topics">
+                    <option value="everydays_life">Everyday life</option>
+                    <option value="computer_science">Computer science</option>
+                    <option value="biology">Biology</option>
+                </select>
+            </div>
+
+            <div class="levels">
+                <label for="levels">Choose a level:</label><br>
+                <select name="levels" id="levels">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="countdown">
+                <label for="countdown">Choose a timer (s):</label><br>
+                <input type="number" id="countdown" name="countdown" value="60" min="15" max="120">
+
+            </div>
+        </form>
+    </div>
+
     <div id="text-container">Text here</div>
-    <div id="timer-container">Time left : 60s</div>
-    <div id="final-score"></div>
-    <button type="button" id="try-again">TRY AGAIN</button>
+
+    <div class="stat-container" id="final-stats">
+
+    <div class="statistic">
+        <div class="stat-name">Correct characters</div>
+        <div id="stat-correct-chars" class="score">0</div>
+    </div>
+
+    <div class="statistic">
+        <div class="stat-name">Total characters typed</div>
+        <div id="stat-total-chars" class="score">0</div>
+    </div>
+
+    <div class="statistic">
+        <div class="stat-name">Correct words</div>
+        <div id="stat-correct-words" class="score">0</div>
+    </div>
+
+    <div class="statistic">
+        <div class="stat-name">Errors at end</div>
+        <div id="stat-final-errors" class="score">0</div>
+    </div>
+
+    <div class="statistic">
+        <div class="stat-name">Total errors committed</div>
+        <div id="stat-total-errors" class="score">0</div>
+    </div>
+
+    <div class="statistic">
+        <div class="stat-name">Accuracy</div>
+        <div id="stat-accuracy" class="score">0%</div>
+    </div>
+
+    <div class="statistic stat-final">
+        <div class="stat-name">Final score (CPM)</div>
+        <div id="stat-final-score" class="score">0</div>
+    </div>
+
+</div>
+
+
+    <div class="timer-container">
+        <div class="time-lab">Time left (s)</div>
+        <div id="time-left">60</div>
+    </div>
+
+    <button type="button" id="try-again">Try Again</button>
+    
+
+    
     
     
     <script src="https://kit.fontawesome.com/4a27f4fc20.js" crossorigin="anonymous"></script>
