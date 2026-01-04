@@ -28,159 +28,301 @@ const words = [
   "compound","element","molecule","atom","bond","structure","crystal","solution","mixture","concentration"
 ];
 
-const textContainer = document.getElementById('text-container');
-const timeContainer = document.querySelector('#timer-container');
-const tryAgainButton = document.querySelector('#try-again');
-const finalScore = document.querySelector('#final-score');
+// =====================================================
+// DOM ELEMENTS (match current HTML ids)
+// =====================================================
+const textContainer   = document.getElementById("text-container");
 
-let totalTyped = '';
-let currentCharIndex = 0;
-let errors = 0;
-let longText = generateLongText();
-let timeLeft = 60;
-let timerInterval;
+const topicSelect     = document.getElementById("topics");
+const levelSelect     = document.getElementById("levels");
+const countdownInput  = document.getElementById("countdown");
+
+const timeLeftEl      = document.getElementById("time-left");
+const tryAgainBtn     = document.getElementById("try-again");
+
+const finalStatsBox   = document.getElementById("final-stats");
+
+// Final stats fields
+const statCorrectChars  = document.getElementById("stat-correct-chars");
+const statTotalChars    = document.getElementById("stat-total-chars");
+const statCorrectWords  = document.getElementById("stat-correct-words");
+const statFinalErrors   = document.getElementById("stat-final-errors");
+const statTotalErrors   = document.getElementById("stat-total-errors");
+const statAccuracy      = document.getElementById("stat-accuracy");
+const statFinalScore    = document.getElementById("stat-final-score");
+
+// =====================================================
+// STATE (game variables)
+// =====================================================
+let longText = "";              // generated text (string)
+let typedText = "";             // what user typed so far (string)
+
+let errorsAtEnd = 0;            // errors visible at the end (after corrections)
+let totalErrorsCommitted = 0;   // cumulative errors (never decreases)
 let typingStarted = false;
 
+let timeLeft = countdownInput.value; 
+let timerInterval = null;
 
-// ----------------------------------------------------- functions
 
-// shuffle the words
+// =====================================================
+// FUNCTIONS
+// =====================================================
+
+// shiffle the words
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i+1));
+        const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
 
-// combine shuffled words into a long string with spaces
+// combining words into a long string
 function generateLongText() {
-    const shuffledWords = shuffleArray([...words]);
-    return shuffledWords.join(' ');
+    const shuffled = shuffleArray([...words]);
+    return shuffled.join(" ");
 }
 
-// starting a countdown timer
-function startTimer() {
-    if (!typingStarted) {
-        typingStarted = true;
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            timeContainer.textContent = `Time left : ${timeLeft}s`;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                endTest();
-            }
-        }, 1000) // every 1000ms (1s) execute what's inside
-    }
-}
-
-// calculate the words-per-minute scores with error adjustment
-function calculateWPM() {
-    const wordsTyped = totalTyped.trim().split(/\s+/).length;
-    const baseWPM = Math.round((wordsTyped / 60) * 60);
-    const adjustedWPM = Math.max(baseWPM - errors, 0);
-    return adjustedWPM;
-}
-
-// end the test and display final score
-function endTest() {
-    timeContainer.textContent = `Time's up!`;
-    finalScore.textContent = `Final WPM: ${calculateWPM()}`;
-    textContainer.style.display = 'none';
-    tryAgainButton.style.display = 'block';
-}
-
-// Reset the test
-function resetTest() {
-    clearInterval(timerInterval);
-    timeLeft = 60;
-    timeContainer.textContent = `Time left : ${timeLeft}s`;
-    finalScore.textContent = '';
-    textContainer.style.display = 'block';
-    tryAgainButton.style.display = 'none';
-    totalTyped = '';
-    typingStarted = false;
-    currentCharIndex = 0;
-    errors = 0;
-    textContainer.scrollLeft = 0;
+// initialize the test
+function initTest() {
     longText = generateLongText();
-    init();
+    typedText = "";
+
+    errorsAtEnd = 0;
+    totalErrorsCommitted = 0;
+    typingStarted = false;
+
+    timeLeft = Number(countdownInput.value);
+    timeLeftEl.textContent = timeLeft;
+
+    textContainer.style.display = "flex";
+    textContainer.textContent = longText;
+    textContainer.scrollLeft = 0;
+
+    finalStatsBox.style.display = "none";
+    tryAgainBtn.style.display = "none";
+
+    clearInterval(timerInterval);
 }
 
-// initialize the test 
-function init() {
-    if (isMobileDevise()) {
-        showMobileMessage();
-    } else {
-        textContainer.innerText = longText;
-        timeContainer.textContent = `Time left : ${timeLeft}s`;
-    }
+// reset the test
+function resetTest() {
+    initTest();
 }
 
-// start up
-init();
+// starting the timer
+function startTimer() {
+    if (typingStarted) return;
 
-// detect mobile users!
-function isMobileDevise() {
-    return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 800;
-}
+    typingStarted = true;
 
-// show message for mobile users
-function showMobileMessage() {
-    textContainer.textContent = 'This typing test is designed for desktop users only!';
-}
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timeLeftEl.textContent = timeLeft;
 
-// Event listeners 
-
-// handle typing over a displayed text and scrolling
-document.addEventListener("keydown", (e) => {
-    
-    startTimer(); // start the timer
-    
-    if (e.key === 'Backspace') {
-        if (totalTyped.length > 0) {
-            currentCharIndex = Math.max(currentCharIndex - 1, 0);
-            totalTyped = totalTyped.slice(0, -1);
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            endTest();
         }
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
-        // just tracking letters without any other character
-        totalTyped += e.key; 
-        currentCharIndex ++;
-    }
+    }, 1000);
+}
 
-    const textArray = longText.split(''); // split into an array of 1 char
-    textContainer.innerText = '';
-    errors = 0;
+// updating text display & handling errors
+function updateTextDisplay() {
+    textContainer.innerHTML = "";
 
-    // looping through my new array of characters
-    for (let i = 0; i < textArray.length; i++) {
-        // create a span element (for coloring the strings)
-        const span = document.createElement('span');
+    let currentErrors = 0;
 
-        if (i < totalTyped.length) {
-            if (totalTyped[i] === textArray[i]) {
-                span.classList.add('correct');
+    for (let i = 0; i < longText.length; i++) {
+        const span = document.createElement("span");
+        const expectedChar = longText[i];
+        const typedChar = typedText[i];
+
+        if (typedChar !== undefined) {
+            if (typedChar === expectedChar) {
+                span.classList.add("correct");
             } else {
-                span.classList.add('error');
-                errors++;
+                span.classList.add("error");
+                currentErrors++;
             }
         }
 
-        span.textContent = textArray[i];
+        span.textContent = expectedChar;
         textContainer.appendChild(span);
     }
 
-    // adding a horizontal scroll when reaching a certain distance (30 character)
-    if (totalTyped.length >= 30) {
-        const scrollAmount = (totalTyped.length - 30) * 13;
-        textContainer.scrollLeft = scrollAmount;
+    // errors visible at this moment
+    errorsAtEnd = currentErrors;
+
+    handleScroll();
+}
+
+// handle the scroll
+function handleScroll() {
+    const visibleOffset = 30;
+    const charWidth = 13;
+
+    if (typedText.length > visibleOffset) {
+        textContainer.scrollLeft =
+            (typedText.length - visibleOffset) * charWidth;
+    }
+}
+
+// get the correct character
+function getCorrectCharacters() {
+    let correct = 0;
+
+    for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === longText[i]) {
+            correct++;
+        }
     }
 
-    
+    return correct;
+}
 
+// get total character typed
+function getTotalCharactersTyped() {
+    return typedText.length;
+}
+
+// get correct words typed
+function getCorrectWords() {
+    const typedWords = typedText.trim().split(/\s+/);
+    const referenceWords = longText.split(" ");
+
+    let correctWords = 0;
+
+    for (let i = 0; i < typedWords.length; i++) {
+        if (typedWords[i] === referenceWords[i]) {
+            correctWords++;
+        }
+    }
+
+    return correctWords;
+}
+
+// get accuracy score
+function getAccuracy() {
+    const total = getTotalCharactersTyped();
+    if (total === 0) return 0;
+
+    const correct = getCorrectCharacters();
+    const err = totalErrorsCommitted;
+    return Math.round(((correct - err) / total) * 100);
+}
+
+// get the final score
+function getFinalScore() {
+    const correctChars = getCorrectCharacters();
+    const accuracy = getAccuracy() / 100;
+
+    return Math.round(correctChars * accuracy / countdownInput.value * 60);
+}
+
+
+
+
+// ending the test
+function endTest() {
+    textContainer.style.display = "none";
+    finalStatsBox.style.display = "flex";
+    tryAgainBtn.style.display = "block";
+
+    const correctChars = getCorrectCharacters();
+    const totalChars = getTotalCharactersTyped();
+    const correctWords = getCorrectWords();
+    const accuracy = getAccuracy();
+    const finalScore = getFinalScore();
+
+    statCorrectChars.textContent = correctChars;
+    statTotalChars.textContent = totalChars;
+    statCorrectWords.textContent = correctWords;
+    statFinalErrors.textContent = errorsAtEnd;
+    statTotalErrors.textContent = totalErrorsCommitted;
+    statAccuracy.textContent = `${accuracy}%`;
+    statFinalScore.textContent = finalScore;
+}
+
+
+
+
+
+// =============================
+// THE APP -- Event listeners
+// =============================
+
+initTest();
+
+document.addEventListener("keydown", (e) => {
+    if (timeLeft <= 0) return;
+
+    // Ignore typing when focus is on input/select
+    if (["INPUT", "SELECT"].includes(document.activeElement.tagName)) {
+        return;
+    }
+    
+    // Ignore digits
+    if (/^\d$/.test(e.key)) return;
+    
+    // Ignore special keys
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    
+    startTimer();
+    
+    if (e.key === "Backspace") {
+        if (typedText.length > 0) {
+            typedText = typedText.slice(0, -1);
+        }
+    } 
+    else if (e.key.length === 1) {
+        typedText += e.key;
+
+        const index = typedText.length - 1;
+        if (e.key !== longText[index]) {
+            totalErrorsCommitted++;   
+        }
+    }
+
+    updateTextDisplay();
 });
 
-// Try again button event listener
-tryAgainButton.addEventListener('click', resetTest);
+
+// event listener on the inputs
+countdownInput.addEventListener("input", () => {
+    if (typingStarted) return;
+
+    let value = Number(countdownInput.value);
+
+    if (isNaN(value)) return;
+
+    timeLeft = value;
+    timeLeftEl.textContent = timeLeft;
+});
+
+
+
+tryAgainBtn.addEventListener("click", resetTest);
+
+
+
+const comingSoonMessage =
+    "This feature is not available yet.\nIt will be added in a future update.";
+
+
+topicSelect.addEventListener("change", () => {
+    alert(comingSoonMessage);
+    
+    // reset to default (optional but recommended)
+    topicSelect.value = "everydays_life";
+});
+
+levelSelect.addEventListener("change", () => {
+    alert(comingSoonMessage);
+
+    // reset to default
+    levelSelect.value = "easy";
+});
 
 
