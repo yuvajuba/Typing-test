@@ -1,7 +1,32 @@
-[
-  "apple", "river", "cloud", "stone", "forest", "shadow", "garden", "kitchen",
-  "window", "table", "chair", "bread", "coffee", "morning", "evening", "weekend",
-  "family", "friend", "street", "market", "bicycle", "umbrella", "pocket", "blanket",
-  "pillow", "candle", "mirror", "ticket", "holiday", "weather", "sunshine", "rain",
-  "music", "letter", "school", "office", "train", "bottle", "basket", "journey"
-]
+{
+  "easy": [
+    "apple", "river", "cloud", "stone", "forest", "shadow", "garden", "kitchen",
+    "window", "table", "chair", "bread", "coffee", "morning", "evening", "weekend",
+    "family", "friend", "street", "market", "bicycle", "umbrella", "pocket", "blanket",
+    "pillow", "candle", "mirror", "ticket", "holiday", "weather", "sunshine", "rain",
+    "music", "letter", "school", "office", "train", "bottle", "basket", "journey",
+    "sofa", "garage", "laundry", "breakfast", "dinner", "neighbor", "suitcase", "wallet",
+    "jacket", "sandwich", "balcony", "park", "bakery", "picnic", "kettle", "doorbell",
+    "towel", "spoon", "carpet", "plate", "lamp", "cookie", "pencil", "sweater"
+  ],
+  "medium": [
+    "appointment", "groceries", "refrigerator", "neighborhood", "furniture", "restaurant", "supermarket", "conversation",
+    "comfortable", "celebration", "newspaper", "microwave", "dishwasher", "wardrobe", "toothbrush", "cupboard",
+    "receipt", "schedule", "vegetables", "commute", "headphones", "souvenir", "playground", "chocolate",
+    "birthday", "mortgage", "delicious", "necessary", "rhythm", "vacation", "Monday", "Tuesday",
+    "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January", "February", "September",
+    "November", "December", "Christmas", "Halloween", "Easter", "Thanksgiving", "London", "Paris",
+    "Europe", "Africa", "Atlantic", "English", "French", "Spanish", "iPhone", "iPad",
+    "YouTube", "WhatsApp", "PayPal", "LinkedIn", "PowerPoint", "PlayStation", "eBay", "FedEx"
+  ],
+  "hard": [
+    "conscientious", "embarrassment", "onomatopoeia", "entrepreneur", "bureaucracy", "questionnaire", "miscellaneous", "procrastination",
+    "acknowledgment", "housewarming", "unforgettable", "extraordinary", "quintessential", "idiosyncrasy", "sophisticated", "mischievous",
+    "pronunciation", "perseverance", "accommodation", "rendezvous", "connoisseur", "chrysanthemum", "lieutenant", "colonel",
+    "mother-in-law", "sister-in-law", "forget-me-not", "well-being", "self-esteem", "merry-go-round", "jack-in-the-box", "check-in",
+    "twenty-one", "long-distance", "up-to-date", "Mediterranean", "Massachusetts", "Mississippi", "Connecticut", "Worcestershire",
+    "Leicester", "Edinburgh", "Copenhagen", "Liechtenstein", "Albuquerque", "Reykjavik", "Johannesburg", "ATM",
+    "DIY", "FAQ", "ASAP", "RSVP", "PIN", "BBQ", "SUV", "GPS",
+    "IKEA", "LEGO", "UNESCO", "NATO", "SpongeBob", "DreamWorks", "Tchaikovsky", "Schwarzenegger"
+  ]
+}

@@ -44,9 +44,10 @@
             <div class="levels">
                 <label for="levels">Choose a level:</label><br>
                 <select name="levels" id="levels">
+                    <!-- each value is a key in every words/<topic>.json file -->
                     <option value="easy">Easy</option>
-                    <option value="medium" disabled>Medium <span class="soon">soon</span></option>
-                    <option value="hard" disabled>Hard <span class="soon">soon</span></option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
                 </select>
             </div>
 
@@ -59,6 +60,9 @@
     </div>
 
     <div id="text-container">Text here</div>
+
+    <!-- shown at the end of a test: this run's stats + best scores for the topic -->
+    <div class="results" id="results">
 
     <div class="stat-container" id="final-stats">
 
@@ -97,7 +101,14 @@
         <div id="stat-final-score" class="score">0</div>
     </div>
 
-</div>
+    </div>
+
+    <div class="stat-container" id="best-scores">
+        <div class="best-title">Best scores &middot; <span id="best-topic"></span></div>
+        <div id="best-list" class="best-list"></div>
+    </div>
+
+    </div>
 
 
     <div class="timer-container">
@@ -106,11 +117,21 @@
     </div>
 
     <button type="button" id="try-again">Try Again</button>
-    
 
-    
-    
-    
+    <!-- floating button (bottom right) opening every topic's best scores -->
+    <button type="button" id="stats-btn" class="stats-btn" aria-haspopup="dialog">
+        <i class="fa-solid fa-trophy" aria-hidden="true"></i> Best scores
+    </button>
+
+    <dialog id="stats-dialog" closedby="any" aria-labelledby="stats-title">
+        <div class="dialog-header">
+            <h2 id="stats-title">Best scores</h2>
+            <button type="button" id="stats-close" class="dialog-close" aria-label="Close">&times;</button>
+        </div>
+        <p class="dialog-hint">Highest final score (CPM) for each topic and level, saved in this browser.</p>
+        <div id="stats-grid" class="stats-grid"></div>
+    </dialog>
+
     <script src="https://kit.fontawesome.com/4a27f4fc20.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>

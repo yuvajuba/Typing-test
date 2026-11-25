@@ -1,8 +1,33 @@
-[
-  "diagnosis", "treatment", "therapy", "patient", "disease", "cancer", "leukemia", "tumor",
-  "infection", "inflammation", "immunity", "antibody", "antigen", "vaccine", "pathogen", "symptom",
-  "fever", "surgery", "anesthesia", "prescription", "dosage", "antibiotic", "pharmacy", "clinic",
-  "hospital", "nurse", "doctor", "stethoscope", "pulse", "blood", "heart", "lung",
-  "kidney", "liver", "fracture", "allergy", "insulin", "diabetes", "scan", "recovery",
-  "bandage"
-]
+{
+  "easy": [
+    "diagnosis", "treatment", "therapy", "patient", "disease", "cancer", "leukemia", "tumor",
+    "infection", "inflammation", "immunity", "antibody", "antigen", "vaccine", "pathogen", "symptom",
+    "fever", "surgery", "anesthesia", "prescription", "dosage", "antibiotic", "pharmacy", "clinic",
+    "hospital", "nurse", "doctor", "stethoscope", "pulse", "blood", "heart", "lung",
+    "kidney", "liver", "fracture", "allergy", "insulin", "diabetes", "scan", "recovery",
+    "bandage", "syringe", "ultrasound", "biopsy", "epidemic", "transplant", "migraine", "asthma",
+    "pneumonia", "ambulance", "physician", "remedy", "cardiology", "neurology", "pediatrics", "wound",
+    "cough", "vitamin", "sneeze", "bruise", "injury", "nausea", "splint", "rash"
+  ],
+  "medium": [
+    "chemotherapy", "cardiovascular", "gastroenterology", "dermatology", "orthopedic", "radiology", "oncology", "hematology",
+    "endocrinology", "physiotherapy", "hypertension", "cholesterol", "arrhythmia", "tuberculosis", "hepatitis", "appendicitis",
+    "meningitis", "malaria", "influenza", "paracetamol", "ibuprofen", "penicillin", "morphine", "adrenaline",
+    "defibrillator", "intravenous", "prognosis", "rehabilitation", "contagious", "quarantine", "vaccination", "metastasis",
+    "benign", "malignant", "chronic", "palliative", "outpatient", "placebo", "cartilage", "Alzheimer",
+    "Parkinson", "Hippocrates", "Pasteur", "Fleming", "Nightingale", "Huntington", "Crohn", "Tourette",
+    "Ebola", "Zika", "Lyme", "Hodgkin", "Salmonella", "Achilles", "Heimlich", "epidural",
+    "cataract", "glaucoma", "dementia", "concussion", "antiseptic", "aspirin", "EpiPen", "Botox"
+  ],
+  "hard": [
+    "electroencephalogram", "electrocardiogram", "otorhinolaryngology", "sphygmomanometer", "pneumothorax", "thrombocytopenia", "gastroesophageal", "immunosuppressant",
+    "immunohistochemistry", "cholecystectomy", "laparoscopy", "tracheostomy", "osteoporosis", "atherosclerosis", "myocardial", "ischemia",
+    "hemorrhage", "anaphylaxis", "encephalitis", "schizophrenia", "pharmacokinetics", "pharmacodynamics", "nephrology", "ophthalmology",
+    "anesthesiologist", "acetaminophen", "methotrexate", "corticosteroid", "glucocorticoid", "X-ray", "follow-up", "check-up",
+    "over-the-counter", "life-threatening", "double-blind", "drug-resistant", "Guillain-Barre", "Creutzfeldt-Jakob", "Epstein-Barr", "Kaposi",
+    "Hashimoto", "Addison", "Cushing", "Raynaud", "Kawasaki", "Stevens-Johnson", "Wolff-Parkinson-White", "MRI",
+    "ECG", "EEG", "ICU", "CPR", "HIV", "AIDS", "COPD", "ADHD",
+    "PTSD", "BMI", "IgG", "IgE", "IgM", "DiGeorge", "McBurney", "NSAID",
+    "SARS"
+  ]
+}

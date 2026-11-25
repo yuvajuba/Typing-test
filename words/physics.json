@@ -1,8 +1,33 @@
-[
-  "energy", "force", "mass", "velocity", "acceleration", "momentum", "gravity", "friction",
-  "pressure", "temperature", "entropy", "equilibrium", "charge", "field", "potential", "current",
-  "voltage", "resistance", "magnet", "photon", "electron", "proton", "neutron", "quantum",
-  "wave", "frequency", "amplitude", "wavelength", "spectrum", "optics", "lens", "prism",
-  "inertia", "torque", "orbit", "particle", "atom", "radiation", "plasma", "vacuum",
-  "density"
-]
+{
+  "easy": [
+    "energy", "force", "mass", "velocity", "acceleration", "momentum", "gravity", "friction",
+    "pressure", "temperature", "entropy", "equilibrium", "charge", "field", "potential", "current",
+    "voltage", "resistance", "magnet", "photon", "electron", "proton", "neutron", "quantum",
+    "wave", "frequency", "amplitude", "wavelength", "spectrum", "optics", "lens", "prism",
+    "inertia", "torque", "orbit", "particle", "atom", "radiation", "plasma", "vacuum",
+    "density", "kinetic", "relativity", "isotope", "fission", "fusion", "oscillation", "pendulum",
+    "refraction", "reflection", "magnetism", "capacitor", "conductor", "joule", "buoyancy", "heat",
+    "light", "volt", "watt", "decay", "spin", "quark", "comet", "meteor"
+  ],
+  "medium": [
+    "thermodynamics", "electromagnetism", "superconductor", "semiconductor", "interference", "diffraction", "polarization", "conservation",
+    "centripetal", "centrifugal", "gravitational", "nuclear", "thermal", "radioactive", "magnitude", "displacement",
+    "trajectory", "projectile", "oscillator", "resonance", "viscosity", "turbulence", "conduction", "convection",
+    "transistor", "hydraulic", "astrophysics", "cosmology", "telescope", "nebula", "supernova", "galaxy",
+    "asteroid", "Newton", "Einstein", "Galileo", "Kepler", "Faraday", "Maxwell", "Bohr",
+    "Planck", "Curie", "Fermi", "Hubble", "Tesla", "Kelvin", "Celsius", "Fahrenheit",
+    "Hertz", "Doppler", "Ohm", "Archimedes", "Coriolis", "Bernoulli", "Pascal", "Ampere",
+    "Huygens", "Hawking", "Copernicus", "Oppenheimer", "kilowatt", "luminosity", "capacitance", "inductance"
+  ],
+  "hard": [
+    "superposition", "entanglement", "decoherence", "renormalization", "eigenvalue", "eigenstate", "wavefunction", "spectroscopy",
+    "interferometer", "quasiparticle", "superfluidity", "piezoelectric", "ferromagnetism", "paramagnetic", "diamagnetic", "birefringence",
+    "bremsstrahlung", "nucleosynthesis", "magnetohydrodynamics", "antimatter", "hadron", "lepton", "neutrino", "positron",
+    "gluon", "tachyon", "spacetime", "black-body", "wave-particle", "spin-orbit", "half-life", "mass-energy",
+    "Schrodinger", "Heisenberg", "Hamiltonian", "Lagrangian", "Boltzmann", "Bose-Einstein", "Fermi-Dirac", "Navier-Stokes",
+    "Higgs", "Feynman", "Dirac", "Pauli", "Coulomb", "Avogadro", "Rutherford", "Minkowski",
+    "Lorentz", "Michelson-Morley", "LASER", "NASA", "CERN", "LHC", "QED", "QCD",
+    "EMF", "LIGO", "eV", "keV", "MeV", "GeV", "TeV", "kWh",
+    "dB"
+  ]
+}

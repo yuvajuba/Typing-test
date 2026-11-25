@@ -1,8 +1,33 @@
-[
-  "algorithm", "compiler", "function", "variable", "array", "object", "string", "boolean",
-  "loop", "recursion", "pointer", "memory", "cache", "thread", "process", "kernel",
-  "network", "protocol", "server", "client", "database", "query", "index", "browser",
-  "script", "module", "library", "framework", "repository", "commit", "branch", "merge",
-  "deploy", "container", "encryption", "hash", "token", "latency", "bandwidth", "debugger",
-  "interface", "callback", "promise"
-]
+{
+  "easy": [
+    "algorithm", "compiler", "function", "variable", "array", "object", "string", "boolean",
+    "loop", "recursion", "pointer", "memory", "cache", "thread", "process", "kernel",
+    "network", "protocol", "server", "client", "database", "query", "index", "browser",
+    "script", "module", "library", "framework", "repository", "commit", "branch", "merge",
+    "deploy", "container", "encryption", "hash", "token", "latency", "bandwidth", "debugger",
+    "interface", "callback", "promise", "syntax", "runtime", "iterator", "stack", "queue",
+    "socket", "router", "firewall", "binary", "integer", "parser", "terminal", "package",
+    "endpoint", "schema", "refactor", "closure", "pixel", "cursor", "keyboard", "laptop"
+  ],
+  "medium": [
+    "asynchronous", "concurrency", "polymorphism", "inheritance", "encapsulation", "abstraction", "serialization", "authentication",
+    "authorization", "middleware", "virtualization", "compression", "scheduler", "dependency", "configuration", "optimization",
+    "deadlock", "semaphore", "mutex", "bytecode", "interpreter", "hexadecimal", "lambda", "generator",
+    "decorator", "exception", "overflow", "documentation", "backend", "frontend", "localhost", "timestamp",
+    "checksum", "cryptography", "pagination", "microservice", "Linux", "Python", "Java", "Windows",
+    "Unix", "Turing", "Lovelace", "Dijkstra", "Google", "Docker", "Kubernetes", "Git",
+    "Rust", "Ruby", "Kotlin", "Swift", "Android", "Ubuntu", "Debian", "Firefox",
+    "Bluetooth", "Ethernet", "JavaScript", "GitHub", "GitLab", "PowerShell", "WordPress", "Raspberry"
+  ],
+  "hard": [
+    "idempotent", "memoization", "metaprogramming", "multithreading", "parallelization", "containerization", "instantiation", "deserialization",
+    "normalization", "denormalization", "asymptotic", "nondeterministic", "backpropagation", "hyperparameter", "interoperability", "amortized",
+    "combinatorial", "heuristic", "lexicographic", "tokenization", "transpiler", "monomorphization", "reentrant", "linearizability",
+    "object-oriented", "peer-to-peer", "end-to-end", "man-in-the-middle", "read-only", "copy-on-write", "first-class", "zero-day",
+    "open-source", "client-server", "Turing-complete", "Byzantine", "Hadoop", "Haskell", "Fortran", "Erlang",
+    "Knuth", "Huffman", "Bellman-Ford", "Floyd-Warshall", "Diffie-Hellman", "Levenshtein", "Unicode", "HTTP",
+    "HTTPS", "JSON", "SQL", "API", "CPU", "GPU", "TCP", "DNS",
+    "HTML", "CSS", "URL", "RAM", "SSH", "ASCII", "PostgreSQL", "TypeScript",
+    "GraphQL", "WebAssembly", "macOS", "OAuth", "NumPy", "PyTorch"
+  ]
+}

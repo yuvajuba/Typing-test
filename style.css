@@ -26,7 +26,7 @@ body {
     margin: 0;
     min-height: 100vh;
     min-height: 100dvh;
-    padding: 0 var(--gutter) 32px;
+    padding: 0 var(--gutter) 88px; /* bottom: room for the floating Best scores button */
     background-color: var(--bg);
     font-family: monospace;
     color: var(--text);
@@ -150,18 +150,6 @@ select:disabled {
     box-shadow: none;
 }
 
-/* "soon" tag on options that aren't available yet */
-.soon {
-    margin-left: 0.5em;
-    padding: 1px 6px;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--neon-pink);
-    border: 1px solid var(--neon-pink);
-    border-radius: 999px;
-}
-
 /* Fully styled dropdown list where the browser supports it (Chrome/Edge/Safari).
    Other browsers keep the native dropdown with the neon box above. */
 @supports (appearance: base-select) {
@@ -244,9 +232,21 @@ select:disabled {
     align-items: center;
 }
 
-.stat-container {
+/* end of test: this run's stats and the topic's best scores, side by side
+   (stacked on narrow screens) */
+.results {
+    display: none; /* shown by script.js when the test ends */
+    width: min(840px, 100%);
     margin: clamp(12px, 3vh, 30px) auto;
-    width: min(400px, 100%);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.stat-container {
+    flex: 1 1 300px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,7 +257,6 @@ select:disabled {
     padding: 15px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
-    display: none;
 }
 
 .stat-final {
@@ -306,6 +305,205 @@ select:disabled {
     transition: 0.8s ease;
 }
 
-#text-container span {min-width: 13px;}
+#text-container span {
+    min-width: 13px;
+    position: relative; /* anchors the cursor below */
+}
 .correct { color: green; font-weight: 700; }
 .error   { color: red;   font-weight: 700; }
+
+/* pulsing cursor under the next character to type (spaces included).
+   The span is redrawn on every key, so it stays solid while you type
+   and pulses when you pause. */
+#text-container span.current::after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--neon-pink);
+    box-shadow: 0 0 6px var(--glow-pink);
+    animation: cursor-pulse 1s ease-in-out infinite;
+}
+
+@keyframes cursor-pulse {
+    50% { opacity: 0.15; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #text-container span.current::after { animation: none; }
+}
+
+
+/* ---------- best scores ---------- */
+
+.best-title {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 6px var(--glow-cyan);
+}
+
+.best-list { width: 100%; }
+
+.best-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+/* level just played */
+.best-row.is-current .best-level { color: var(--neon-cyan); }
+
+.best-value {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.best-score { color: gold; font-weight: 700; }
+.best-score.empty { color: rgba(230, 230, 230, 0.4); }
+
+.best-detail {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    opacity: 0.6;
+}
+
+.new-best {
+    margin-left: 8px;
+    padding: 1px 6px;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--neon-pink);
+    border: 1px solid var(--neon-pink);
+    border-radius: 999px;
+    box-shadow: 0 0 8px var(--glow-pink);
+}
+
+/* floating button, bottom right */
+.stats-btn {
+    position: fixed;
+    right: var(--gutter);
+    bottom: var(--gutter);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+    background-color: var(--field-bg);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 999px;
+    box-shadow: 0 0 10px var(--glow-cyan);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-btn:hover,
+.stats-btn:focus-visible,
+.dialog-close:hover,
+.dialog-close:focus-visible {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 14px var(--glow-pink);
+    outline: none;
+}
+
+/* pop-up with every topic */
+#stats-dialog {
+    width: min(900px, calc(100% - 2 * var(--gutter)));
+    max-height: calc(100dvh - 2 * var(--gutter));
+    padding: 20px;
+    font-family: monospace;
+    color: var(--text);
+    background-color: var(--field-bg);
+    border: 2px solid var(--neon-pink);
+    border-radius: 14px;
+    box-shadow: 0 0 24px var(--glow-pink);
+}
+
+/* the page behind turns dim and blurry */
+#stats-dialog::backdrop {
+    background-color: rgba(10, 10, 16, 0.55);
+    backdrop-filter: blur(6px);
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 6px var(--glow-cyan);
+}
+
+.dialog-close {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--neon-cyan);
+    background: none;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dialog-hint {
+    margin: 8px 0 16px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.topic-card {
+    padding: 14px;
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.topic-card h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: var(--mint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stats-btn,
+    .dialog-close {
+        transition: none;
+    }
+}

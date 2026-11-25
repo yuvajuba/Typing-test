@@ -1,7 +1,33 @@
-[
-  "cell", "genome", "protein", "enzyme", "pathway", "chromosome", "allele", "mutation",
-  "gene", "transcription", "translation", "replication", "ribosome", "mitochondria", "nucleus", "membrane",
-  "organelle", "photosynthesis", "metabolism", "homeostasis", "evolution", "species", "habitat", "ecosystem",
-  "bacteria", "virus", "parasite", "fungus", "tissue", "organ", "embryo", "differentiation",
-  "receptor", "ligand", "hormone", "neuron", "plankton", "pollen", "osmosis", "diffusion"
-]
+{
+  "easy": [
+    "cell", "gene", "genome", "protein", "enzyme", "pathway", "chromosome", "allele",
+    "mutation", "translation", "replication", "ribosome", "nucleus", "membrane", "organelle", "evolution",
+    "species", "habitat", "ecosystem", "bacteria", "virus", "parasite", "fungus", "tissue",
+    "organ", "embryo", "receptor", "ligand", "hormone", "neuron", "plankton", "pollen",
+    "osmosis", "diffusion", "cytoplasm", "vacuole", "genotype", "phenotype", "symbiosis", "predator",
+    "algae", "spore", "larva", "pigment", "glucose", "taxonomy", "vertebrate", "seed",
+    "root", "leaf", "insect", "feather", "mammal", "reptile", "petal", "coral",
+    "skeleton", "muscle", "gill", "nest", "fossil", "yeast", "venom", "nectar"
+  ],
+  "medium": [
+    "mitochondria", "photosynthesis", "metabolism", "homeostasis", "differentiation", "transcription", "chloroplast", "nucleotide",
+    "metamorphosis", "chlorophyll", "cytokinesis", "microorganism", "biodiversity", "respiration", "fermentation", "carbohydrate",
+    "prokaryote", "eukaryote", "invertebrate", "herbivore", "carnivore", "omnivore", "pollination", "germination",
+    "hybridization", "heterozygous", "homozygous", "recessive", "dominant", "heredity", "adaptation", "extinction",
+    "camouflage", "mitosis", "meiosis", "gamete", "zygote", "polymerase", "cellulose", "biosphere",
+    "endoplasmic", "Darwin", "Mendel", "Linnaeus", "Galapagos", "Amazon", "Lamarck", "Watson",
+    "Crick", "Franklin", "Cambrian", "Jurassic", "Neanderthal", "Mesozoic", "Leeuwenhoek", "ecology",
+    "genetics", "zoology", "botany", "microscope", "bioluminescence", "Pangaea", "Serengeti", "Galton"
+  ],
+  "hard": [
+    "deoxyribonucleic", "ribonucleic", "endosymbiosis", "phosphorylation", "glycolysis", "electrophoresis", "bioinformatics", "phylogenetics",
+    "cytoskeleton", "oligonucleotide", "spliceosome", "transcriptome", "proteomics", "epigenetics", "methylation", "chemiosmosis",
+    "plasmodesmata", "endonuclease", "exonuclease", "peptidoglycan", "lipopolysaccharide", "apoptosis", "autophagy", "gastrulation",
+    "morphogenesis", "neurotransmitter", "acetylcholine", "ubiquitination", "nucleosome", "heterochromatin", "euchromatin", "telomerase",
+    "centromere", "kinetochore", "double-helix", "cross-pollination", "self-replication", "loss-of-function", "gain-of-function", "cold-blooded",
+    "Krebs", "Calvin", "Golgi", "Okazaki", "Punnett", "Mendelian", "Darwinian", "Hardy-Weinberg",
+    "Drosophila", "Arabidopsis", "Escherichia", "Saccharomyces", "DNA", "RNA", "ATP", "PCR",
+    "CRISPR", "NADH", "GMO", "SNP", "mRNA", "tRNA", "rRNA", "siRNA",
+    "mtDNA", "cDNA"
+  ]
+}
