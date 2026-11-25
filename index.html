@@ -11,6 +11,12 @@
 </head>
 <body>
 
+    <!-- only shown on touch devices (phones / tablets), see style.css -->
+    <p class="keyboard-notice" role="note">
+        <strong>Heads up:</strong> this typing test is made for computers.
+        You'll need a physical keyboard to take it.
+    </p>
+
     <div class="instructions-container">
         <p class="instructions">
             Welcome to a typing test. This test measures your typing speed. 
@@ -25,9 +31,13 @@
             <div class="topics">
                 <label for="topics">Choose a topic:</label><br>
                 <select name="topics" id="topics">
-                    <option value="everydays_life">Everyday life</option>
+                    <!-- each value loads words/<value>.json ("mix" is built from all of them) -->
+                    <option value="everyday_life">Everyday life</option>
                     <option value="computer_science">Computer science</option>
                     <option value="biology">Biology</option>
+                    <option value="physics">Physics</option>
+                    <option value="medicine">Medicine</option>
+                    <option value="mix">Mixture of all</option>
                 </select>
             </div>
 
@@ -35,13 +45,13 @@
                 <label for="levels">Choose a level:</label><br>
                 <select name="levels" id="levels">
                     <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
+                    <option value="medium" disabled>Medium <span class="soon">soon</span></option>
+                    <option value="hard" disabled>Hard <span class="soon">soon</span></option>
                 </select>
             </div>
 
             <div class="countdown">
-                <label for="countdown">Choose a timer (s):</label><br>
+                <label for="countdown">Choose a timer <span class="hint">(15s to 120s)</span>:</label><br>
                 <input type="number" id="countdown" name="countdown" value="60" min="15" max="120">
 
             </div>

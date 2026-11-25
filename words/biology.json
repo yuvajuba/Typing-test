@@ -1,0 +1,7 @@
+[
+  "cell", "genome", "protein", "enzyme", "pathway", "chromosome", "allele", "mutation",
+  "gene", "transcription", "translation", "replication", "ribosome", "mitochondria", "nucleus", "membrane",
+  "organelle", "photosynthesis", "metabolism", "homeostasis", "evolution", "species", "habitat", "ecosystem",
+  "bacteria", "virus", "parasite", "fungus", "tissue", "organ", "embryo", "differentiation",
+  "receptor", "ligand", "hormone", "neuron", "plankton", "pollen", "osmosis", "diffusion"
+]

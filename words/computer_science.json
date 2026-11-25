@@ -1,0 +1,8 @@
+[
+  "algorithm", "compiler", "function", "variable", "array", "object", "string", "boolean",
+  "loop", "recursion", "pointer", "memory", "cache", "thread", "process", "kernel",
+  "network", "protocol", "server", "client", "database", "query", "index", "browser",
+  "script", "module", "library", "framework", "repository", "commit", "branch", "merge",
+  "deploy", "container", "encryption", "hash", "token", "latency", "bandwidth", "debugger",
+  "interface", "callback", "promise"
+]
